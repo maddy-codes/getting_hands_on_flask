@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block page_title %}INDEX{%endblock%}
+
+{% block content_body %} 
+<div> <br><br> </div>
+<div class="container">
+    <form class="d-flex" role="search" action="/" method="POST">
+      <input class="form-control me-2 p-2" type="todo" placeholder="I want to::::" aria-label="todo" name="content">
+      <button class="btn btn-outline-success me-2 p-2" type="submit" name="add">Add</button>
+      <button class="btn btn-outline-danger me-2 p-2" type="submit" name="remove">Rem</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>
+                task
+            </th>
+            <th>
+                added
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </table>
+
+    {% for task in tasks %}
+        <tr>
+            <td></td>
+            <td>taks.content</td>
+            <td>
+                <input class="form-control me-2 p-2" type="todo" placeholder="I want to::::" aria-label="todo" name="content">
+                <button class="btn btn-outline-danger me-2 p-2" name="remove"><a href = '#'>Remove</a></button>
+            </td>
+        </tr>
+    {%endfor%}
+</div>
+
+{%endblock%}
