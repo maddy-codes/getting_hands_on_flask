@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block page_title %}INDEX{%endblock%}
+
+{% block content_body %} 
+<div> <br><br> </div>
+<div class="container">
+
+    <h1 class="display-1 text-center">Update Page</h1>
+
+    <form class="d-flex" role="search" action="/update/{{task.id}}" method="POST">
+      <input class="form-control me-2 p-2" type="todo" placeholder="I want to::::" aria-label="todo" name="content" id="content" value="{{task.content}}">
+      <button class="btn btn-outline-success me-2 p-2" type="submit" name="add">Add</button>
+    </form>
+
+
+</div>
+
+{%endblock%}

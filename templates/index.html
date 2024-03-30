@@ -5,36 +5,44 @@
 {% block content_body %} 
 <div> <br><br> </div>
 <div class="container">
+    <h1 class="display-1 text-center">Task Planner</h1>
+    
+
+        {% if tasks|length < 1 %}
+            <H4 class ="text-center">There are no tasks create one below!</H4>
+        {% else %}
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    task
+                </th>
+                <th>
+                    added
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            <tr>
+                
+                {% for task in tasks %}
+                <td>{{task.content}}</td>
+                <td>{{task.date_created.date()}}</td>
+                <td>
+                    <button class="btn btn-outline-warning me-2 p-2" name="update"><a href = '/update/{{task.id}}'>Update</a></button>
+                    <button class="btn btn-outline-danger me-2 p-2" name="remove"><a href = '/delete/{{task.id}}'>Remove</a></button>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+    {% endif %}
+
     <form class="d-flex" role="search" action="/" method="POST">
-      <input class="form-control me-2 p-2" type="todo" placeholder="I want to::::" aria-label="todo" name="content">
+      <input class="form-control me-2 p-2" type="todo" placeholder="I want to::::" aria-label="todo" name="content" id="content">
       <button class="btn btn-outline-success me-2 p-2" type="submit" name="add">Add</button>
-      <button class="btn btn-outline-danger me-2 p-2" type="submit" name="remove">Rem</button>
     </form>
 
-    <table>
-        <tr>
-            <th>
-                task
-            </th>
-            <th>
-                added
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-    </table>
 
-    {% for task in tasks %}
-        <tr>
-            <td></td>
-            <td>taks.content</td>
-            <td>
-                <input class="form-control me-2 p-2" type="todo" placeholder="I want to::::" aria-label="todo" name="content">
-                <button class="btn btn-outline-danger me-2 p-2" name="remove"><a href = '#'>Remove</a></button>
-            </td>
-        </tr>
-    {%endfor%}
 </div>
 
 {%endblock%}
